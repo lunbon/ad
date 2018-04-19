@@ -7,9 +7,9 @@ from functions import (last_news, edit_message,
 						get_dk_names)
 from models import Date
 
-token     = 'NDIxNzE2MTIxMzAxOTQyMjky.Dak2eQ.yb89-6tb8QmqLpclLYrYhZEK0so'
+token     = 'token'
 channel   = discord.Object(id='417269196850987029')
-server_id = '417269196850987027'
+server_id = 'server_id'
 bot       = commands.Bot(command_prefix='?')
 
 
