@@ -8,7 +8,7 @@ from functions import (last_news, edit_message,
 from models import Date
 
 token     = 'token'
-channel   = discord.Object(id='417269196850987029')
+channel   = discord.Object(id='channel_id')
 server_id = 'server_id'
 bot       = commands.Bot(command_prefix='?')
 
