@@ -4,12 +4,12 @@ import json
 from discord.ext import commands
 from functions import (last_news, edit_message,
 						get_last_date, save_last_date,
-						get_dk_names)
+						get_dk_names,add_member)
 from models import Date
 
-token     = 'token'
-channel   = discord.Object(id='channel_id')
-server_id = 'server_id'
+token     = token
+channel   = discord.Object(id=id)
+server_id = id
 bot       = commands.Bot(command_prefix='?')
 
 
@@ -20,6 +20,12 @@ async def on_ready():
 	print(bot.user.id)
 	print('-'*18)
 
+@bot.command(pass_context=True)
+async def add(ctx, vk_name:str, dk_name:str):
+	if add_member(vk_name,dk_name):
+		await bot.say('added')
+	else:
+		await bot.say('Error!')
 async def check_anoncements():
 	await bot.wait_until_ready()
 	date  = get_last_date()

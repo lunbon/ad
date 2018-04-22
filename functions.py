@@ -91,3 +91,15 @@ def get_last_date():
 
 def save_last_date(date):
 	return 0
+def add_member(vk_name,dk_name):
+	new_member={vk_name:dk_name}
+	with open('team.json','r') as f:
+		old_members=json.loads(f.read())
+	try:
+		with open('team.json','w') as f:
+			f.write(str(json.dumps({**old_members,**new_member})))
+			return True
+	except:
+		with open('team.json','w') as f:
+			f.write(str(json.dumps(old_members)))
+			return False
