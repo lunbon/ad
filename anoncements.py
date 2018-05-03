@@ -6,7 +6,7 @@ from functions import last_news, get_embed, \
 						get_last_date,get_dk_names
 from models import Date, Team
 
-token     = 'token'
+token     = 'NDQxNjMyNDg0NjgyMTA0ODMy.DczF4Q.s-yNLP5AIexUWcumaIUCDymnBZw'
 channel   = discord.Object(id='417269196850987029')
 role_id   = '440831065028820992'
 bot       = commands.Bot(command_prefix='?')
