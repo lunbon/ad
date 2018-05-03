@@ -9,7 +9,7 @@ url='https://vk.com/angeldevmanga'
 '''functions for parsing vk'''
 def get_last_posts(last_date=None):
 	posts=[]
-	response=requests.get(url)
+	response=requests.get(url,headers={'content-language':'ru'})
 	if response.status_code!=200:
 		raise "Error "+status_code
 	html  = response.text
