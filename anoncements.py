@@ -32,6 +32,14 @@ async def add(ctx, vk_name:str, dk_name:str):
 			await bot.say('Error!')
 	else:
 		await bot.say('Нет прав!')
+@bot.command()
+async def last():
+	server=bot.get_server(server_id)
+	post  = last_news()[0]
+	dk_names = get_dk_names(post['translators'],server,team)
+	embed    = get_embed(post['title'],dk_names,
+				post['links'],post['language'],bot)
+	await bot.send_message(channel, embed=embed)
 
 async def check_anoncements():
 	await bot.wait_until_ready()

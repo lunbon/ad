@@ -67,7 +67,7 @@ def get_last_date():
 	else: date = Date(sys.argv[1])
 	return date
 
-def last_news(last):
+def last_news(last=Date('28 апр в 17:25')):
 	posts = get_last_posts(last)
 	titles=[]
 	for post in posts:
