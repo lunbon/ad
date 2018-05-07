@@ -7,9 +7,14 @@ from models import Date
 
 url='https://vk.com/angeldevmanga'
 '''functions for parsing vk'''
+def get_ru_vk_page():
+	s = requests.Session()
+	response = s.get(url,cookies={'remixlang':'0'})
+	return response
+
 def get_last_posts(last_date=None):
 	posts=[]
-	response=requests.get(url,headers={'content-language':'ru'})
+	response=get_ru_vk_page()
 	if response.status_code!=200:
 		raise "Error "+status_code
 	html  = response.text
@@ -28,7 +33,8 @@ def get_language(post):
 	text=re.findall("Переведено с .*",str(post))[0].split('<br/>')[0]
 	return bs4(text,'html.parser').get_text()
 def get_vk_names(post):
-	text=re.findall("Над главой работали: .*",str(post))[0].split('<br/>')[0][21:-1]
+	raw_text = re.findall("Над главой работали: .*",str(post))[0].split('<br/>')[0][21:-1]
+	text     = bs4(raw_text,'html.parser').get_text().replace(' и ', ', ')
 	return bs4(text,'html.parser').get_text().split(', ')
 
 def get_dk_names(translators,server,team):
@@ -101,7 +107,7 @@ def get_embed(title,translators,links,language, bot):
 			"description":description,
 			"colour":0x00bfff}
 	embed = discord.Embed(**embed)
-	embed.set_author(name=title,icon_url=bot.user.default_avatar_url)
+	embed.set_author(name=title,icon_url=bot.user.avatar_url)
 	for field in fields:embed.add_field(**field)
 	embed.set_footer(text=language,icon_url='https://images-ext-2.discordapp.net/external/bQOHBE_ApJFlLTeOUYdZBC-KhPKacnCoBQKXFp4PYzE/https/pp.userapi.com/c638721/v638721291/6ead8/PkwxZ165LXA.jpg')
 	return embed
