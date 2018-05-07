@@ -13,6 +13,7 @@ def get_ru_vk_page():
 	return response
 
 def get_last_posts(last_date=None):
+	s = requests.Session()
 	posts=[]
 	response=get_ru_vk_page()
 	if response.status_code!=200:
@@ -21,7 +22,8 @@ def get_last_posts(last_date=None):
 	soup  = bs4(html,'html.parser')
 	for item in soup.find_all('a', class_='wi_date'):
 		post_href = '?w='+item.get('href')[1:]
-		post = bs4(requests.get(url+post_href).text,'html.parser')
+
+		post = bs4(s.get(url+post_href,cookies={'remixlang':'0'}).text,'html.parser')
 		if last_date is None:
 			return [post]
 		date=get_date(post)
