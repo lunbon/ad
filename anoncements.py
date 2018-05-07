@@ -7,10 +7,10 @@ from functions import last_news, get_embed, \
 from models import Date, Team
 
 token     = 'NDQxNjMyNDg0NjgyMTA0ODMy.DczF4Q.s-yNLP5AIexUWcumaIUCDymnBZw'
-channel   = discord.Object(id='417269196850987029')
-role_id   = '440831065028820992'
+channel   = discord.Object(id='407369776625614848')
+role_id   = '404996151121543169'
 bot       = commands.Bot(command_prefix='?')
-server_id = '417269196850987027'
+server_id = '404992131539795968'
 team = Team('team.json')
 
 @bot.event
