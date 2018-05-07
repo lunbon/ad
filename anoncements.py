@@ -39,7 +39,7 @@ async def last():
 	dk_names = get_dk_names(post['translators'],server,team)
 	embed    = get_embed(post['title'],dk_names,
 				post['links'],post['language'],bot)
-	await bot.send_message(channel, embed=embed)
+	await bot.say(embed=embed)
 
 async def check_anoncements():
 	await bot.wait_until_ready()
