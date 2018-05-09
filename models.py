@@ -65,7 +65,7 @@ class Team:
 						'"TheDarkLord": "391977557886500874"}')
 			file.close()
 		self.filename = filename
-	def get_all_members(self):
+	def all_members(self):
 		try:
 			with open(self.filename,'r') as f:
 				members = json.loads(f.read())

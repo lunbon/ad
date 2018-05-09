@@ -6,7 +6,7 @@ from functions import last_news, get_embed, \
 						get_last_date,get_dk_names
 from models import Date, Team
 
-token     = 'NDQxNjMyNDg0NjgyMTA0ODMy.DczF4Q.s-yNLP5AIexUWcumaIUCDymnBZw'
+token     = token
 channel   = discord.Object(id='407369776625614848')
 role_id   = '404996151121543169'
 bot       = commands.Bot(command_prefix='?')
@@ -32,6 +32,12 @@ async def add(ctx, vk_name:str, dk_name:str):
 			await bot.say('Error!')
 	else:
 		await bot.say('Нет прав!')
+@bot.command
+async def show():
+	members = team.all_members
+	for key in members:
+		message+='%s - %s'%(key,member[key])
+	bot.say(message)
 @bot.command()
 async def last():
 	server=bot.get_server(server_id)
